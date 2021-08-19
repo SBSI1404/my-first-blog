@@ -21,12 +21,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w-a1milt%7py5r=$0g5!qxwgmjefvp(vj(e2@l2gk@u^+42t&-'
+# SECRET_KEY = 'django-insecure-w-a1milt%7py5r=$0g5!qxwgmjefvp(vj(e2@l2gk@u^+42t&-'
+# hide a secret key
+from django.core.management.utils import get_random_secret_key
+SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = False
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+# prevent it from transmitting a cookie by HTTP by mistake by making CSRF_COOKIE_SECURE True.
+CSRF_COOKIE_SECURE = True
+
+# prevent it from transmitting a session cookie by HTTP by mistake by making SESSION_COOKIE_SECURE True.
+SESSION_COOKIE_SECURE = True
+
+# ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.pythonanywhere.com', 'sbsuser1404.pythonanywhere.com']
 
 
 # Application definition
